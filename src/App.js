@@ -1,93 +1,261 @@
-import React from "react";
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  pdf,
-} from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import MyDocument from "./MyDocument";
 
-const employeeData = [
-  { id: "1", name: "John Doe", gender: "male", role: "Developer" },
-  { id: "2", name: "Jane Smith", gender: "female", role: "Designer" },
-  { id: "3", name: "Mark Johnson", gender: "male", role: "Manager" },
+const data = [
+  {
+    id: 1,
+    name: "Alice",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 2,
+    name: "Bob",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 3,
+    name: "Jovana",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 4,
+    name: "Stevan",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 5,
+    name: "Alice",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 6,
+    name: "Bob",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 7,
+    name: "Jovana",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 8,
+    name: "Stevan",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 9,
+    name: "Alice",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 10,
+    name: "Bob",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 11,
+    name: "Jovana",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 12,
+    name: "Stevan",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 13,
+    name: "Alice",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 14,
+    name: "Bob",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 15,
+    name: "Jovana",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 16,
+    name: "Stevan",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 17,
+    name: "Alice",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 18,
+    name: "Bob",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 19,
+    name: "Jovana",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 20,
+    name: "Stevan",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 21,
+    name: "Alice",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 22,
+    name: "Bob",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 23,
+    name: "Jovana",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 24,
+    name: "Stevan",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 25,
+    name: "Alice",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 26,
+    name: "Bob",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 27,
+    name: "Jovana",
+    role: "Developer",
+    gender: "Female",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
+  {
+    id: 28,
+    name: "Stevan",
+    role: "Designer",
+    gender: "Male",
+    image:
+      "https://th.bing.com/th/id/OIP.leRaZskYpTKA55a0St0tZgHaJa?cb=iwp2&rs=1&pid=ImgDetMain",
+  },
 ];
 
-const styles = StyleSheet.create({
-  page: {
-    padding: 30,
-    fontSize: 12,
-    fontFamily: "Helvetica",
-  },
-  section: {
-    marginBottom: 10,
-  },
-  heading: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 6,
-  },
-  col: {
-    width: "30%",
-  },
-});
-
-const MyDocument = ({ data }) => (
-  <Document>
-    <Page size="A4" style={styles.page}>
-      <Text style={styles.heading}>Employee List</Text>
-      <View style={styles.row}>
-        <Text style={styles.col}>Name</Text>
-        <Text style={styles.col}>Gender</Text>
-        <Text style={styles.col}>Role</Text>
-      </View>
-      {data.map((emp) => (
-        <View key={emp.id} style={styles.row}>
-          <Text style={styles.col}>{emp.name}</Text>
-          <Text style={styles.col}>{emp.gender}</Text>
-          <Text style={styles.col}>{emp.role}</Text>
-        </View>
-      ))}
-    </Page>
-  </Document>
-);
-
-function App() {
-  const handleDownload = async () => {
-    const blob = await pdf(<MyDocument data={employeeData} />).toBlob();
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "employees.pdf";
-    a.click();
-
-    URL.revokeObjectURL(url);
-  };
-
+export default function App() {
   return (
     <div style={{ padding: 20 }}>
       <h1>Employee List</h1>
       <ul>
-        {employeeData.map((emp) => (
+        {data.map((emp) => (
           <li key={emp.id}>
-            {emp.name} - {emp.role} ({emp.gender})
+            {emp.name} — {emp.role} — {emp.gender}
           </li>
         ))}
       </ul>
-      <button
-        onClick={handleDownload}
-        style={{ marginTop: 20, padding: "10px 20px" }}
+
+      <PDFDownloadLink
+        document={<MyDocument data={data} />}
+        fileName="employees.pdf"
+        style={{
+          marginTop: 20,
+          padding: "10px 20px",
+          backgroundColor: "#007bff",
+          color: "white",
+          textDecoration: "none",
+          borderRadius: 5,
+          fontWeight: "bold",
+          display: "inline-block",
+        }}
       >
-        Download PDF
-      </button>
+        {({ loading }) => (loading ? "Preparing document..." : "Download PDF")}
+      </PDFDownloadLink>
     </div>
   );
 }
-
-export default App;
