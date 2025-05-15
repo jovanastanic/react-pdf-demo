@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Donwload PDF App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple web app for testing PDF generation using the react-pdf library. It displays a list of employees and provides a button to generate and download a PDF document containing their data.
 
 ## Available Scripts
 
